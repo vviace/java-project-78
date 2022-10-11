@@ -5,6 +5,8 @@ plugins {
 group 'hexlet.code'
 version '1.0-SNAPSHOT'
 
+java.toolchain.languageVersion = JavaLanguageVersion.of(17)
+
 compileJava {
     options.release = 17
 }
