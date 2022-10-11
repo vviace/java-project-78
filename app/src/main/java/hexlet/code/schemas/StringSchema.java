@@ -4,15 +4,15 @@ public class StringSchema {
     public boolean status = true;
     public String containValue;
 
-    public boolean isValid(Object obj){
+    public boolean isValid(Object obj) {
         String str = "";
-        if(obj != null) {
+        if (obj != null) {
             str = obj.toString();
         }
-        if(obj == null || str.length() == 0) {
+        if (obj == null || str.length() == 0) {
             return status;
         }
-        if(str.contains(containValue)) {
+        if (str.contains(containValue)) {
             return true;
         }
         return false;
@@ -20,7 +20,7 @@ public class StringSchema {
     public void required() {
         this.status = false;
     }
-    public StringSchema contains(String value){
+    public StringSchema contains(String value) {
         this.containValue = value;
         return this;
     }

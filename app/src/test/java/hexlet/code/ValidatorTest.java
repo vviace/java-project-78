@@ -1,9 +1,9 @@
 package hexlet.code;
 import hexlet.code.schemas.StringSchema;
 
-import static org.assertj.core.api.Assertions.assertThat;
+//import static org.assertj.core.api.Assertions.assertThat;
 
-public class test {
+public class ValidatorTest {
     @org.junit.jupiter.api.Test
     void testValidate() {
         Validator v = new Validator();
