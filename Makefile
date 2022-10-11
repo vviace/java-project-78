@@ -1,53 +1,34 @@
-.DEFAULT_GOAL := build-install
+
+.DEFAULT_GOAL := build-run
 
 clean:
-	./gradlew clean
+	make -C app clean
 
 build:
-	./gradlew clean build
+	make -C app build
 
 install:
-	./gradlew clean install
+	make -C app install
 
-run-app:
-	./build/install/app/bin/app -h
+run-dist:
+	make -C run-dist
 
-diff-json:
-	./build/install/app/bin/app src/test/resources/file1.json src/test/resources/file2.json
-
-diff-json-stylish:
-	./build/install/app/bin/app -f stylish src/test/resources/file1.json src/test/resources/file2.json
-
-diff-json-plain:
-	./build/install/app/bin/app -f plain src/test/resources/file1.json src/test/resources/file2.json
-
-diff-yml:
-	./build/install/app/bin/app src/test/resources/file1.yml src/test/resources/file2.yml
-
-diff-yml-stylish:
-	./build/install/app/bin/app -f stylish src/test/resources/file1.yml src/test/resources/file2.yml
-
-diff-yml-plain:
-	./build/install/app/bin/app -f plain src/test/resources/file1.yml src/test/resources/file2.yml
-
-diff-yml-json:
-	./build/install/app/bin/app -f json src/test/resources/file1.yml src/test/resources/file2.yml
-
-diff-json-output:
-	./build/install/app/bin/app -f json src/test/resources/file1.json src/test/resources/file2.json
+run:
+	make -C app run
 
 test:
-	./gradlew test
+	make -C app test
 
 report:
-	./gradlew jacocoTestReport
+	make -C app report
 
 lint:
-	./gradlew checkstyleMain checkstyleTest
+	make -C app lint
 
 update-deps:
-	./gradlew useLatestVersions
+	make -C app update-deps
 
-build-install: update-deps build install
+
+build-run: build run
 
 .PHONY: build
