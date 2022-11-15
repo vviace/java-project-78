@@ -1,27 +1,17 @@
 package hexlet.code.schemas;
 
-public class StringSchema {
-    public boolean status = true;
-    public String containValue;
-
-    public boolean isValid(Object obj) {
-        String str = "";
-        if (obj != null) {
-            str = obj.toString();
-        }
-        if (obj == null || str.length() == 0) {
-            return status;
-        }
-        if (str.contains(containValue)) {
-            return true;
-        }
-        return false;
+public final class StringSchema extends BaseSchema {
+    public StringSchema required() {
+        addChecks(o -> o instanceof String str && !str.isEmpty());
+        return this;
     }
-    public void required() {
-        this.status = false;
+    public StringSchema minLength(int value) {
+        addChecks(o -> ((String) o).length() >= value);
+        return this;
     }
     public StringSchema contains(String value) {
-        this.containValue = value;
+        addChecks(o -> ((String) o).contains(value.toLowerCase()));
         return this;
     }
 }
+
