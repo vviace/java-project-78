@@ -116,4 +116,5 @@ class ValidatorTest {
         actual6.put("age", 15);
         assertThat(schema.isValid(actual6)).isFalse();
     }
+
 }
